@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
     String temperatura = "";
     String mesUltimaTemp = "";
     String anoUltimaTemp = "";
-    var horaUltimaTemp = int.parse(stringResponse[teste-41].toString()+ stringResponse[teste - 40].toString());
+    var horaUltimaTemp = int.parse(stringResponse[teste - 41].toString() + stringResponse[teste - 40].toString());
     if (descobrir == "}") {
       temperatura = stringResponse[teste - 6].toString() +
           stringResponse[teste - 5].toString();

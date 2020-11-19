@@ -31,19 +31,16 @@ class _HomePageState extends State<HomePage> {
     int teste = stringResponse.toString().length;
     String descobrir = stringResponse[teste - 1].toString();
     String minUltimaTemp = "";
-    String horaUltimaTemp = "";
     String diaUltimaTemp = "";
     String temperatura = "";
     String mesUltimaTemp = "";
     String anoUltimaTemp = "";
-
+    var horaUltimaTemp = int.parse(stringResponse[teste-41].toString()+ stringResponse[teste - 40].toString());
     if (descobrir == "}") {
       temperatura = stringResponse[teste - 6].toString() +
           stringResponse[teste - 5].toString();
       minUltimaTemp = stringResponse[teste - 38].toString() +
           stringResponse[teste - 37].toString();
-      horaUltimaTemp = stringResponse[teste - 41].toString() +
-          stringResponse[teste - 40].toString();
       diaUltimaTemp = stringResponse[teste - 44].toString() +
           stringResponse[teste - 43].toString();
       mesUltimaTemp =
@@ -55,6 +52,7 @@ class _HomePageState extends State<HomePage> {
     } else {
       print('Erro');
     }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Broker Remoto'),
@@ -78,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Center(
               child: Text(
-                'Atualizado em: ${diaUltimaTemp}-${mesUltimaTemp}-${anoUltimaTemp} às ${horaUltimaTemp}:${minUltimaTemp}',
+                'Atualizado em: ${diaUltimaTemp}/${mesUltimaTemp}/${anoUltimaTemp} às ${horaUltimaTemp - 3}:${minUltimaTemp}',
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
             ),
@@ -86,14 +84,14 @@ class _HomePageState extends State<HomePage> {
               height: 45,
             ),
             Text(
-              'DATA: ${diaUltimaTemp}-${mesUltimaTemp}-${anoUltimaTemp}',
+              'DATA: ${diaUltimaTemp}/${mesUltimaTemp}/${anoUltimaTemp}',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             SizedBox(
               height: 10,
             ),
             Text(
-              'HORA: ${horaUltimaTemp}:${minUltimaTemp}',
+              'HORA: ${horaUltimaTemp - 3}:${minUltimaTemp}',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             SizedBox(

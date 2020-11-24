@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:webview_flutter/webview_flutter.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -35,7 +36,21 @@ class _HomePageState extends State<HomePage> {
     String temperatura = "";
     String mesUltimaTemp = "";
     String anoUltimaTemp = "";
-    var horaUltimaTemp = int.parse(stringResponse[teste - 41].toString() + stringResponse[teste - 40].toString());
+    var horaUltimaTemp = int.parse(stringResponse[teste - 41].toString() +
+        stringResponse[teste - 40].toString());
+
+    if (horaUltimaTemp == 00) {
+      horaUltimaTemp = 21;
+    }
+    if (horaUltimaTemp == 01) {
+      horaUltimaTemp = 22;
+    }
+    if (horaUltimaTemp == 02) {
+      horaUltimaTemp = 23;
+    }
+    if (horaUltimaTemp == 03) {
+      horaUltimaTemp = 00;
+    }
     if (descobrir == "}") {
       temperatura = stringResponse[teste - 6].toString() +
           stringResponse[teste - 5].toString();
@@ -76,7 +91,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Center(
               child: Text(
-                'Atualizado em: ${diaUltimaTemp}/${mesUltimaTemp}/${anoUltimaTemp} às ${horaUltimaTemp - 3}:${minUltimaTemp}',
+                'Atualizado em: ${diaUltimaTemp}/${mesUltimaTemp}/${anoUltimaTemp} às ${horaUltimaTemp}:${minUltimaTemp}',
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
             ),
@@ -101,17 +116,25 @@ class _HomePageState extends State<HomePage> {
               'TEMPERATURA: ${temperatura}°',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
+            SizedBox(
+              height: 120,
+            ),
             FlatButton(
+              height: 80,
+              color: Colors.blue,
               onPressed: () {
                 Navigator.pushNamed(
                   context,
                   '/grafico',
                 );
               },
-              child: SizedBox(
-                width: 600,
-                height: 320,
-                child: Image.asset("assets/grafico2.png"),
+              child: Text(
+                'Gráfico',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],

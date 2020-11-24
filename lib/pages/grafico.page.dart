@@ -11,7 +11,7 @@ class GraficoPage extends StatelessWidget {
       body: Container(
         child: WebView(
           initialUrl: Uri.dataFromString(
-                  '<html><body><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1232722/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=spline"></iframe></body></html>',
+                  '<html><body><iframe width="520" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1232722/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=spline"></iframe></body></html>',
                   mimeType: 'text/html')
               .toString(),
           javascriptMode: JavascriptMode.unrestricted,

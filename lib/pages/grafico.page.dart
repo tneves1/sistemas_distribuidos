@@ -6,7 +6,7 @@ class GraficoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: new Text("Grafico"),
+        title: new Text("Gráfico"),
       ),
       body: Container(
         child: WebView(
